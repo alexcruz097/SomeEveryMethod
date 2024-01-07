@@ -59,7 +59,7 @@ function hasNoDuplicates(arr) {
   });
 }
 
-console.log(hasNoDuplicates([1, 2, 3, 1]));
+console.log(hasNoDuplicates([1, 2, 3]));
 /*
 Write a function called hasCertainKey which accepts an array of objects and a key, and returns true if every single object in the array contains that key. Otherwise it should return false.
 
@@ -74,8 +74,19 @@ Examples:
     hasCertainKey(arr,'first') // true
     hasCertainKey(arr,'isCatOwner') // false
 */
+var array = [
+  { title: "Instructor", first: "Elie", last: "Schoppik" },
+  { title: "Instructor", first: "Tim", last: "Garcia", isCatOwner: true },
+  { title: "Instructor", first: "Matt", last: "Lane" },
+  { title: "Instructor", first: "Colt", last: "Steele", isCatOwner: true },
+];
+function hasCertainKey(array, key) {
+  return array.every((obj) => {
+    return obj.hasOwnProperty(key);
+  });
+}
 
-function hasCertainKey(arr, key) {}
+console.log(hasCertainKey(array, "first"));
 
 /*
 Write a function called hasCertainValue which accepts an array of objects and a key, and a value, and returns true if every single object in the array contains that value for the specific key. Otherwise it should return false.
@@ -92,5 +103,15 @@ Examples:
     hasCertainValue(arr,'first','Elie') // false
     
 */
-
-function hasCertainValue(arr, key, searchValue) {}
+var arrOBJ = [
+  { title: "Instructor", first: "Elie", last: "Schoppik" },
+  { title: "Instructor", first: "Tim", last: "Garcia", isCatOwner: true },
+  { title: "Instructor", first: "Matt", last: "Lane" },
+  { title: "Instructor", first: "Colt", last: "Steele", isCatOwner: true },
+];
+function hasCertainValue(arrOBJ, key, searchValue) {
+  return arrOBJ.every((obj) => {
+    return obj[key] === searchValue;
+  });
+}
+console.log(hasCertainValue(arrOBJ, "title", "Instructor"));
